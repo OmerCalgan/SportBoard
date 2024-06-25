@@ -1,0 +1,20 @@
+@model IEnumerable<SportBoard.Models.News>
+
+@{
+    ViewBag.Title = "News";
+}
+
+<h2>News</h2>
+
+@foreach (var item in Model)
+{
+    <div class="news-item">
+        <h3>@Html.DisplayFor(modelItem => item.Title)</h3>
+        <p>@Html.DisplayFor(modelItem => item.Content)</p>
+        <p>
+            @Html.ActionLink("Read More", "Details", new { id = item.NewsId }) |
+            @Html.ActionLink("Edit", "Edit", new { id = item.NewsId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.NewsId })
+        </p>
+    </div>
+}

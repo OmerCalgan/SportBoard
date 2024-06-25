@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Welcome to SportBoard</h1>
+    <p>Your source for the latest sports news.</p>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Featured News</h2>
+        @* Slider implementation *@
+        <div id="newsCarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    var news = Model[i];
+                    <div class="carousel-item @(i == 0 ? "active" : "")">
+                        <img src="~/Images/placeholder.png" alt="@news.Title" />
+                        <div class="carousel-caption">
+                            <h3>@news.Title</h3>
+                            <p>@news.Content</p>
+                        </div>
+                    </div>
+                }
+            </div>
+            <a class="carousel-control-prev" href="#newsCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#newsCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+</div>
